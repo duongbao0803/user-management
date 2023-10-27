@@ -34,6 +34,7 @@ function LoginGoogle() {
       google.accounts.id.initialize({
         client_id:
           "338033181927-i87lcvpnude41h26u2q9b9leptnelka8.apps.googleusercontent.com",
+        //cliend_id này đang là của t, m vô google cloud tạo 1 cái mới đi
         callback: handleCredentialResponse,
       });
       google.accounts.id.renderButton(
