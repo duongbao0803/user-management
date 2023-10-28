@@ -36,10 +36,9 @@ function AddForm() {
             name: values.name,
             avatar: values.avatar,
             address: values.address,
-            age: values.address,
+            age: values.age,
           }
         );
-        console.log("check add user", res);
         alert("Add thành công");
         navigate("/home");
       } catch (error) {

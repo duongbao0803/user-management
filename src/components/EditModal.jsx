@@ -39,12 +39,10 @@ function EditModal() {
             name: values.name,
             avatar: values.avatar,
             address: values.address,
-            age: values.address,
+            age: values.age,
           }
         );
-        if (res && res.status === 200) {
-          toast.success("Add thành công");
-        }
+        alert("Sửa thành công");
         navigate("/home");
       } catch (error) {
         console.log("Error Adding User", error);
@@ -149,7 +147,7 @@ function EditModal() {
             type="submit"
             style={{ border: "1px solid #e8f0fe", backgroundColor: "#e8f0fe" }}
           >
-            Add User
+            Edit User
           </Button>
         </form>
       </div>
