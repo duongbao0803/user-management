@@ -12,9 +12,10 @@ import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import DeleteModal from "./DeleteModal";
 import { Button } from "@mui/material";
+import Navbar from "./Navbar";
 
 const columns = [
   { id: "name", label: "Name", minWidth: 170 },
@@ -86,8 +87,20 @@ export default function StickyHeadTable() {
 
   return (
     <>
-      <Link to="/add" style={{ textDecoration: "none" }}>
-        <Button style={{ display: "flex" }}> + Add user</Button>
+      <Link
+        to="/add"
+        style={{
+          textDecoration: "none",
+          display: "flex",
+          justifyContent: "end",
+        }}
+      >
+        <Button
+          style={{ border: "1px solid #e8f0fe", backgroundColor: "#e8f0fe" }}
+        >
+          {" "}
+          + Add user
+        </Button>
       </Link>
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
         <TableContainer sx={{ maxHeight: 440 }}>
@@ -119,7 +132,11 @@ export default function StickyHeadTable() {
                               <img
                                 src={value}
                                 alt="Avatar"
-                                style={{ width: "100px" }}
+                                style={{
+                                  width: "50px",
+                                  height: "50px",
+                                  borderRadius: "50%",
+                                }}
                               />
                             </TableCell>
                           );

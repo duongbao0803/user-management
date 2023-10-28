@@ -18,7 +18,6 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 function AddForm() {
-  const [isEditing, setIsEditing] = useState(false);
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -42,7 +41,7 @@ function AddForm() {
         );
         console.log("check add user", res);
         alert("Add thành công");
-        navigate("/");
+        navigate("/home");
       } catch (error) {
         console.log("Error Adding User", error);
       }
@@ -70,61 +69,84 @@ function AddForm() {
           style={{
             flexDirection: "column",
             display: "flex",
-            width: "90%",
+            width: "40%",
             border: "1px solid black",
             padding: "20px",
           }}
         >
-          <TextField
-            label="Name"
-            name="name"
-            value={formik.values.name}
-            onChange={formik.handleChange}
-          />
-          <span></span>
-          {formik.errors.name && (
-            <Typography variant="caption" color="red">
-              {formik.errors.name}
-            </Typography>
-          )}
+          <div style={{ position: "relative", marginBottom: "26px" }}>
+            <TextField
+              label="Name"
+              name="name"
+              value={formik.values.name}
+              onChange={formik.handleChange}
+              style={{ width: "100%" }}
+            />
+            <div style={{ position: "absolute" }}>
+              {formik.errors.name && (
+                <Typography variant="caption" color="red">
+                  {formik.errors.name}
+                </Typography>
+              )}
+            </div>
+          </div>
 
-          <TextField
-            label="Age"
-            name="age"
-            value={formik.values.age}
-            onChange={formik.handleChange}
-          />
-          <span></span>
-          {formik.errors.age && (
-            <Typography variant="caption" color="red">
-              {formik.errors.age}
-            </Typography>
-          )}
+          <div style={{ position: "relative", marginBottom: "26px" }}>
+            <TextField
+              label="Age"
+              name="age"
+              value={formik.values.age}
+              onChange={formik.handleChange}
+              style={{ width: "100%" }}
+            />
+            <div style={{ position: "absolute" }}>
+              {formik.errors.age && (
+                <Typography variant="caption" color="red">
+                  {formik.errors.age}
+                </Typography>
+              )}
+            </div>
+          </div>
 
-          <TextField
-            label="Address"
-            name="address"
-            value={formik.values.address}
-            onChange={formik.handleChange}
-          />
-          {formik.errors.address && (
-            <Typography variant="caption" color="red">
-              {formik.errors.address}
-            </Typography>
-          )}
-          <TextField
-            label="avatar"
-            name="avatar"
-            value={formik.values.avatar}
-            onChange={formik.handleChange}
-          />
-          {formik.errors.avatar && (
-            <Typography variant="caption" color="red">
-              {formik.errors.avatar}
-            </Typography>
-          )}
+          <div style={{ position: "relative", marginBottom: "26px" }}>
+            <TextField
+              label="Address"
+              name="address"
+              value={formik.values.address}
+              onChange={formik.handleChange}
+              style={{ width: "100%" }}
+            />
+            <div style={{ position: "absolute" }}>
+              {formik.errors.address && (
+                <Typography variant="caption" color="red">
+                  {formik.errors.address}
+                </Typography>
+              )}
+            </div>
+          </div>
 
-          <Button type="submit">Send</Button>
+          <div style={{ position: "relative", marginBottom: "26px" }}>
+            <TextField
+              label="avatar"
+              name="avatar"
+              value={formik.values.avatar}
+              onChange={formik.handleChange}
+              style={{ width: "100%" }}
+            />
+            <div style={{ position: "absolute" }}>
+              {formik.errors.avatar && (
+                <Typography variant="caption" color="red">
+                  {formik.errors.avatar}
+                </Typography>
+              )}
+            </div>
+          </div>
+          <Button
+            type="submit"
+            style={{ border: "1px solid #e8f0fe", backgroundColor: "#e8f0fe" }}
+          >
+            Add User
+          </Button>
         </form>
       </div>
       <ToastContainer />
