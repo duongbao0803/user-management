@@ -8,14 +8,12 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { useState, useEffect } from "react";
-import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import axios from "axios";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import DeleteModal from "./DeleteModal";
 import { Button } from "@mui/material";
-import Navbar from "./Navbar";
 
 const columns = [
   { id: "name", label: "Name", minWidth: 170 },
@@ -47,7 +45,6 @@ export default function StickyHeadTable() {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [user, setUser] = useState([]);
   const [open, setOpen] = useState(false);
-  const [userEdit, setUserEdit] = useState({});
 
   const [dataDelete, setDataDelete] = useState("");
 

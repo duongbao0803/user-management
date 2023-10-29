@@ -1,21 +1,10 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import {
-  Button,
-  FormControl,
-  FormControlLabel,
-  InputLabel,
-  MenuItem,
-  Select,
-  Switch,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { ToastContainer, toast } from "react-toastify";
+import { Button, TextField, Typography } from "@mui/material";
+import { ToastContainer } from "react-toastify";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AddForm() {
   const navigate = useNavigate();
@@ -25,20 +14,16 @@ function AddForm() {
       avatar: "",
       address: "",
       age: "",
-      agree: false,
     },
 
     onSubmit: (values) => {
       try {
-        const res = axios.post(
-          "https://652fa0cc6c756603295d6229.mockapi.io/users",
-          {
-            name: values.name,
-            avatar: values.avatar,
-            address: values.address,
-            age: values.age,
-          }
-        );
+        axios.post("https://652fa0cc6c756603295d6229.mockapi.io/users", {
+          name: values.name,
+          avatar: values.avatar,
+          address: values.address,
+          age: values.age,
+        });
         alert("Add thành công");
         navigate("/home");
       } catch (error) {

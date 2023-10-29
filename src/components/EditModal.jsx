@@ -1,24 +1,12 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import {
-  Button,
-  FormControl,
-  FormControlLabel,
-  InputLabel,
-  MenuItem,
-  Select,
-  Switch,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { ToastContainer, toast } from "react-toastify";
+import { Button, TextField, Typography } from "@mui/material";
+import { ToastContainer } from "react-toastify";
 import axios from "axios";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 function EditModal() {
-  const [isEditing, setIsEditing] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -33,15 +21,12 @@ function EditModal() {
 
     onSubmit: (values) => {
       try {
-        const res = axios.put(
-          `https://652fa0cc6c756603295d6229.mockapi.io/users/${id}`,
-          {
-            name: values.name,
-            avatar: values.avatar,
-            address: values.address,
-            age: values.age,
-          }
-        );
+        axios.put(`https://652fa0cc6c756603295d6229.mockapi.io/users/${id}`, {
+          name: values.name,
+          avatar: values.avatar,
+          address: values.address,
+          age: values.age,
+        });
         alert("Sửa thành công");
         navigate("/home");
       } catch (error) {

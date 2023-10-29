@@ -13,17 +13,6 @@ export default function DeleteModal({
   dataDelete,
   fetchAllUser,
 }) {
-  // const [open, setOpen] = React.useState(false);
-
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
-  console.log("check ", dataDelete);
-
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
-
   const handleSubmit = async () => {
     try {
       let res = await axios.delete(
