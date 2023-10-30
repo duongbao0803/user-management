@@ -57,8 +57,7 @@ export default function StickyHeadTable() {
       const res = await axios.get(
         "https://652fa0cc6c756603295d6229.mockapi.io/users"
       );
-      const sortedUsers = res.data.sort((a, b) => b.age - a.age);
-      setUser(sortedUsers);
+      setUser(res.data);
     } catch (error) {
       console.log("Error fetching user", error);
     }
