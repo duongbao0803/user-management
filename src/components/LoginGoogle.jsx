@@ -47,7 +47,7 @@ function LoginGoogle() {
       {user && (
         <div>
           <h5>{user.name}</h5>
-          <h5>{user.img}</h5>
+          <h5>{user.picture}</h5>
         </div>
       )}
     </>
