@@ -14,7 +14,6 @@ function AddForm() {
       avatar: "",
       address: "",
       age: "",
-      agree: false,
     },
 
     onSubmit: (values) => {

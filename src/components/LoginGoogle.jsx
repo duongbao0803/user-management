@@ -2,20 +2,16 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { Session } from "../App";
 
 function LoginGoogle() {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleCredentialResponse = (response) => {
     console.log("Encoded JWT ID token: " + response.credential);
 
     var decoded = jwtDecode(response.credential);
     console.log("check decode", decoded);
-    localStorage.setItem("status", setIsLoggedIn(true));
     setUser(decoded);
     document.getElementById("buttonDiv").hidden = true;
     navigate("/home");
