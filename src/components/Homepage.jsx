@@ -47,7 +47,6 @@ export default function StickyHeadTable() {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [user, setUser] = useState([]);
   const [open, setOpen] = useState(false);
-  const [userEdit, setUserEdit] = useState({});
 
   const [dataDelete, setDataDelete] = useState("");
 
@@ -58,10 +57,10 @@ export default function StickyHeadTable() {
   const fetchAllUser = async () => {
     try {
       const res = await axios.get(
-        "https://652fa0cc6c756603295d6229.mockapi.io/users"
+        "https://65460c46fe036a2fa9551d05.mockapi.io/users"
       );
-      const sortedUsers = res.data.sort((a, b) => b.age - a.age);
-      setUser(sortedUsers);
+      console.log("check res", res);
+      setUser(res.data);
     } catch (error) {
       console.log("Error fetching user", error);
     }
@@ -87,6 +86,7 @@ export default function StickyHeadTable() {
 
   return (
     <>
+      <Navbar />
       <Link
         to="/add"
         style={{

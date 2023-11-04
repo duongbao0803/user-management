@@ -27,7 +27,7 @@ export default function DeleteModal({
   const handleSubmit = async () => {
     try {
       let res = await axios.delete(
-        `https://652fa0cc6c756603295d6229.mockapi.io/users/${dataDelete}`
+        `https://65460c46fe036a2fa9551d05.mockapi.io/users/${dataDelete}`
       );
       if (res && res.status === 200) {
         alert("Xóa thành công");

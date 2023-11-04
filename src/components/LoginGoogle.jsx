@@ -9,16 +9,13 @@ function LoginGoogle() {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const session = useContext(Session);
-  const users = session.user;
 
   const handleCredentialResponse = (response) => {
     console.log("Encoded JWT ID token: " + response.credential);
 
     var decoded = jwtDecode(response.credential);
     console.log("check decode", decoded);
-    localStorage.setItem("user", decoded);
-    setIsLoggedIn(true);
+    localStorage.setItem("status", setIsLoggedIn(true));
     setUser(decoded);
     document.getElementById("buttonDiv").hidden = true;
     navigate("/home");
@@ -46,18 +43,37 @@ function LoginGoogle() {
   }, []);
 
   return (
-    <>
-      <div id="buttonDiv"></div>
-      {Object.keys(user).length != 0 && (
-        <button onClick={handleLogOut}>logout</button>
-      )}
-      {user && (
-        <div>
-          <h5>{user.name}</h5>
-          <h5>{user.img}</h5>
-        </div>
-      )}
-    </>
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "orange",
+      }}
+    >
+      <div
+        style={{
+          padding: "50px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          backgroundColor: "white",
+        }}
+      >
+        <h1 style={{ marginBottom: "20px" }}>SIGN IN WITH GOOLE</h1>
+        <div id="buttonDiv"></div>
+        {Object.keys(user).length != 0 && (
+          <button onClick={handleLogOut}>logout</button>
+        )}
+        {user && (
+          <div>
+            <h5>{user.name}</h5>
+            <h5>{user.img}</h5>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
 export default LoginGoogle;

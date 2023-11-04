@@ -1,40 +1,26 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import {
-  Button,
-  FormControl,
-  FormControlLabel,
-  InputLabel,
-  MenuItem,
-  Select,
-  Switch,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
-function EditModal() {
-  const [isEditing, setIsEditing] = useState(false);
+function AddForm() {
   const navigate = useNavigate();
   const { id } = useParams();
-
   const formik = useFormik({
     initialValues: {
       name: "",
       avatar: "",
       address: "",
       age: "",
-      agree: false,
     },
 
     onSubmit: (values) => {
       try {
         const res = axios.put(
-          `https://652fa0cc6c756603295d6229.mockapi.io/users/${id}`,
+          `https://65460c46fe036a2fa9551d05.mockapi.io/users/${id}`,
           {
             name: values.name,
             avatar: values.avatar,
@@ -42,7 +28,9 @@ function EditModal() {
             age: values.age,
           }
         );
-        alert("Sửa thành công");
+        if (res && res.data) {
+          alert("Edit Successfully");
+        }
         navigate("/home");
       } catch (error) {
         console.log("Error Adding User", error);
@@ -63,19 +51,37 @@ function EditModal() {
   return (
     <>
       <div
-        className="form"
-        style={{ display: "flex", justifyContent: "center" }}
+        className=""
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "orange",
+          flexDirection: "column",
+          minHeight: "100vh",
+        }}
       >
         <form
           onSubmit={formik.handleSubmit}
           style={{
             flexDirection: "column",
             display: "flex",
-            width: "40%",
+            width: "30%",
             border: "1px solid black",
             padding: "20px",
+            backgroundColor: "#fff",
           }}
         >
+          <div
+            style={{
+              backgroundColor: "#fff",
+              marginBottom: "50px",
+              fontSize: "50px",
+              textAlign: "center",
+            }}
+          >
+            EDIT NEW USER
+          </div>
           <div style={{ position: "relative", marginBottom: "26px" }}>
             <TextField
               label="Name"
@@ -92,7 +98,6 @@ function EditModal() {
               )}
             </div>
           </div>
-
           <div style={{ position: "relative", marginBottom: "26px" }}>
             <TextField
               label="Age"
@@ -109,7 +114,6 @@ function EditModal() {
               )}
             </div>
           </div>
-
           <div style={{ position: "relative", marginBottom: "26px" }}>
             <TextField
               label="Address"
@@ -126,7 +130,6 @@ function EditModal() {
               )}
             </div>
           </div>
-
           <div style={{ position: "relative", marginBottom: "26px" }}>
             <TextField
               label="avatar"
@@ -145,7 +148,10 @@ function EditModal() {
           </div>
           <Button
             type="submit"
-            style={{ border: "1px solid #e8f0fe", backgroundColor: "#e8f0fe" }}
+            style={{
+              border: "1px solid #e8f0fe",
+              backgroundColor: "#e8f0fe",
+            }}
           >
             Edit User
           </Button>
@@ -156,4 +162,4 @@ function EditModal() {
   );
 }
 
-export default EditModal;
+export default AddForm;

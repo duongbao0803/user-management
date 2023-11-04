@@ -1,21 +1,10 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import {
-  Button,
-  FormControl,
-  FormControlLabel,
-  InputLabel,
-  MenuItem,
-  Select,
-  Switch,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { ToastContainer, toast } from "react-toastify";
+import { Button, TextField, Typography } from "@mui/material";
+import { ToastContainer } from "react-toastify";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AddForm() {
   const navigate = useNavigate();
@@ -31,7 +20,7 @@ function AddForm() {
     onSubmit: (values) => {
       try {
         const res = axios.post(
-          "https://652fa0cc6c756603295d6229.mockapi.io/users",
+          "https://65460c46fe036a2fa9551d05.mockapi.io/users",
           {
             name: values.name,
             avatar: values.avatar,
@@ -39,7 +28,7 @@ function AddForm() {
             age: values.age,
           }
         );
-        alert("Add thành công");
+        alert("Add Successfully");
         navigate("/home");
       } catch (error) {
         console.log("Error Adding User", error);
@@ -60,19 +49,37 @@ function AddForm() {
   return (
     <>
       <div
-        className="form"
-        style={{ display: "flex", justifyContent: "center" }}
+        className=""
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "orange",
+          flexDirection: "column",
+          minHeight: "100vh",
+        }}
       >
         <form
           onSubmit={formik.handleSubmit}
           style={{
             flexDirection: "column",
             display: "flex",
-            width: "40%",
+            width: "30%",
             border: "1px solid black",
             padding: "20px",
+            backgroundColor: "#fff",
           }}
         >
+          <div
+            style={{
+              backgroundColor: "#fff",
+              marginBottom: "50px",
+              fontSize: "50px",
+              textAlign: "center",
+            }}
+          >
+            ADD NEW USER
+          </div>
           <div style={{ position: "relative", marginBottom: "26px" }}>
             <TextField
               label="Name"
@@ -89,7 +96,6 @@ function AddForm() {
               )}
             </div>
           </div>
-
           <div style={{ position: "relative", marginBottom: "26px" }}>
             <TextField
               label="Age"
@@ -106,7 +112,6 @@ function AddForm() {
               )}
             </div>
           </div>
-
           <div style={{ position: "relative", marginBottom: "26px" }}>
             <TextField
               label="Address"
@@ -123,7 +128,6 @@ function AddForm() {
               )}
             </div>
           </div>
-
           <div style={{ position: "relative", marginBottom: "26px" }}>
             <TextField
               label="avatar"
@@ -142,7 +146,10 @@ function AddForm() {
           </div>
           <Button
             type="submit"
-            style={{ border: "1px solid #e8f0fe", backgroundColor: "#e8f0fe" }}
+            style={{
+              border: "1px solid #e8f0fe",
+              backgroundColor: "#e8f0fe",
+            }}
           >
             Add User
           </Button>
