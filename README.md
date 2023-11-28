@@ -8,6 +8,6 @@
 - Dương Tôn Bảo - SE171065
 
 
-##### Content me via: tonbao0803@gmail.com
+##### Contact me via: tonbao0803@gmail.com
 
 
