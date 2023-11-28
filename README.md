@@ -1,3 +1,5 @@
+[![Manage User applying CI](https://github.com/duongbao0803/CRUD_React/actions/workflows/nodejs.yml/badge.svg)](https://github.com/duongbao0803/CRUD_React/actions/workflows/nodejs.yml)
+
 ## Exercise 7 - ReactJS
 
 
