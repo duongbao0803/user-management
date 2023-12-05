@@ -1,9 +1,9 @@
 [![Manage User applying CI](https://github.com/duongbao0803/CRUD_React/actions/workflows/nodejs.yml/badge.svg)](https://github.com/duongbao0803/CRUD_React/actions/workflows/nodejs.yml)
 
-## Exercise 7 - ReactJS
+## User Management
 
 
-### Demo: [MiniProject](https://lab7-fer.vercel.app/)
+### Demo: [Manage User](https://lab7-fer.vercel.app/)
 
 
 #### Author:
