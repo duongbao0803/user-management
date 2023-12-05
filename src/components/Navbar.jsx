@@ -23,9 +23,6 @@ const navLinks = ["/home", "/"];
 
 function Navbar(props) {
   const isLogged = localStorage.getItem("status");
-  console.log("is", isLogged);
-
-  const [user, setUser] = useState("");
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);

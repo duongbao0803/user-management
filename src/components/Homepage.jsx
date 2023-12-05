@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import DeleteModal from "./DeleteModal";
 import { Button } from "@mui/material";
 import Navbar from "./Navbar";
+import { Toaster } from "react-hot-toast";
 
 const columns = [
   { id: "name", label: "Name", minWidth: 170 },
@@ -48,6 +49,7 @@ export default function StickyHeadTable() {
   const [open, setOpen] = useState(false);
 
   const [dataDelete, setDataDelete] = useState("");
+  const [dataEdit, setDataEdit] = useState({});
 
   useEffect(() => {
     fetchAllUser();
@@ -185,6 +187,7 @@ export default function StickyHeadTable() {
         dataDelete={dataDelete}
         fetchAllUser={fetchAllUser}
       />
+      <Toaster position="top-right" reverseOrder={false} />
     </>
   );
 }

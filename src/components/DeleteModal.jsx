@@ -6,6 +6,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function DeleteModal({
   open,
@@ -19,7 +20,7 @@ export default function DeleteModal({
         `https://65460c46fe036a2fa9551d05.mockapi.io/users/${dataDelete}`
       );
       if (res && res.status === 200) {
-        alert("Xóa thành công");
+        toast.success("Xóa thành công");
         handleClose();
         fetchAllUser();
       }
@@ -49,6 +50,7 @@ export default function DeleteModal({
           </Button>
         </DialogActions>
       </Dialog>
+      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 }

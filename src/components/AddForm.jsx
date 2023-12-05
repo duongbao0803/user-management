@@ -4,10 +4,14 @@ import * as Yup from "yup";
 import { Button, TextField, Typography } from "@mui/material";
 import { ToastContainer } from "react-toastify";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useState } from "react";
 
 function AddForm() {
+  const { id } = useParams();
   const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -27,7 +31,7 @@ function AddForm() {
             age: values.age,
           }
         );
-        alert("Add Successfully");
+        toast.success("Add Successfully");
         navigate("/home");
       } catch (error) {
         console.log("Error Adding User", error);

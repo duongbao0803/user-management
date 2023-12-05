@@ -1,20 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Button, TextField, Typography } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function AddForm() {
-  const navigate = useNavigate();
   const { id } = useParams();
+  const navigate = useNavigate();
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    fetchUserInfo();
+  }, []);
+
+  const fetchUserInfo = async () => {
+    try {
+      const res = await axios.get(
+        `https://65460c46fe036a2fa9551d05.mockapi.io/users/${id}`
+      );
+      if (res && res.status === 200) {
+        setUserData(res.data);
+      }
+    } catch (error) {
+      console.log("Fetching User Info Error", error);
+    }
+  };
+
   const formik = useFormik({
     initialValues: {
-      name: "",
-      avatar: "",
-      address: "",
-      age: "",
+      name: userData.name || "",
+      avatar: userData.avatar || "",
+      address: userData.address || "",
+      age: userData.age || "",
     },
 
     onSubmit: (values) => {
@@ -29,7 +49,7 @@ function AddForm() {
           }
         );
         if (res && res.data) {
-          alert("Edit Successfully");
+          fetchUserInfo();
         }
         navigate("/home");
       } catch (error) {
@@ -47,6 +67,15 @@ function AddForm() {
         .max(120, "Please type age from 1 to 120"),
     }),
   });
+
+  useEffect(() => {
+    formik.setValues({
+      name: userData.name || "",
+      avatar: userData.avatar || "",
+      address: userData.address || "",
+      age: userData.age || "",
+    });
+  }, [userData, formik.setValues]);
 
   return (
     <>
@@ -102,6 +131,7 @@ function AddForm() {
             <TextField
               label="Age"
               name="age"
+              type="text"
               value={formik.values.age}
               onChange={formik.handleChange}
               style={{ width: "100%" }}
