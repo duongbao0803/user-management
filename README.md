@@ -10,6 +10,14 @@
 - Dương Tôn Bảo - SE171065
 
 
+#### Tech Stack:
+
+- Front-end: ReactJS, CSS3, Axios, MUI, MDB, Mock API.
+- Deployment: Vercel.
+- Other: GitHub, Npm.
+
+
+
 ##### Contact me via: tonbao0803@gmail.com
 
 
