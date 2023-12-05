@@ -10,12 +10,17 @@
 - Dương Tôn Bảo - SE171065
 
 
+#### Introduction
+
+The user management website allows users to log in using their Google accounts through Google Identity, and it includes features for adding, deleting, editing, and filtering user information
+
+
 #### Screen-shots
 
 ![manage_user](https://github.com/duongbao0803/user-management/blob/main/screenshots/Untitled.png?raw=true)
 
 
-#### Tech Stack:
+#### Techstacks:
 
 - Front-end: ReactJS, CSS3, Axios, MUI, MDB, Mock API.
 - Deployment: Vercel.
