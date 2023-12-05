@@ -10,6 +10,11 @@
 - Dương Tôn Bảo - SE171065
 
 
+#### Screen-shots
+
+![manage_user](https://github.com/duongbao0803/user-management/blob/main/screenshots/Untitled.png?raw=true)
+
+
 #### Tech Stack:
 
 - Front-end: ReactJS, CSS3, Axios, MUI, MDB, Mock API.
