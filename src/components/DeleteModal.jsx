@@ -50,7 +50,7 @@ export default function DeleteModal({
           </Button>
         </DialogActions>
       </Dialog>
-      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 }

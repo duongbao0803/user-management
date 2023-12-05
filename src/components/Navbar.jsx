@@ -119,7 +119,6 @@ function Navbar(props) {
           <Typography></Typography>
         </Box>
       </Box>
-      <Toaster position="top-right" reverseOrder={false} />
     </>
   );
 }

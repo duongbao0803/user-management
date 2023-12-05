@@ -187,7 +187,6 @@ export default function StickyHeadTable() {
         dataDelete={dataDelete}
         fetchAllUser={fetchAllUser}
       />
-      <Toaster position="top-right" reverseOrder={false} />
     </>
   );
 }
