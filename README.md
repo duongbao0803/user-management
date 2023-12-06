@@ -30,4 +30,6 @@ The user management website allows users to log in using their Google accounts t
 
 ##### Contact me via: tonbao0803@gmail.com
 
+##### Copyright &#169; 2023 Duong Bao
+
 
