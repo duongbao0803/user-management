@@ -6,7 +6,7 @@
 ### Demo: [Manage User](https://lab7-fer.vercel.app/)
 
 
-#### Author:
+#### Author
 - Dương Tôn Bảo - SE171065
 
 
@@ -20,7 +20,7 @@ The user management website allows users to log in using their Google accounts t
 ![manage_user](https://github.com/duongbao0803/user-management/blob/main/screenshots/Untitled.png?raw=true)
 
 
-#### Techstacks:
+#### Techstacks
 
 - Front-end: ReactJS, CSS3, Axios, MUI, MDB, Mock API.
 - Deployment: Vercel.
