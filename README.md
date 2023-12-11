@@ -34,7 +34,7 @@ Clone the repository:
 ```bash
 git clone https://github.com/duongbao0803/user-management
 ```
-
+Or 
 ```bash
 npm i se171065
 ```
