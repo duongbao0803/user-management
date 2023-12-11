@@ -31,9 +31,9 @@ function LoginGoogle() {
       });
       google.accounts.id.renderButton(
         document.getElementById("buttonDiv"),
-        { theme: "outline", size: "large" } // customization attributes
+        { theme: "outline", size: "large" } 
       );
-      google.accounts.id.prompt(); // also display the One Tap dialog
+      google.accounts.id.prompt(); 
     };
   }, []);
 
