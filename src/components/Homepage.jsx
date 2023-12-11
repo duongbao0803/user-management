@@ -10,12 +10,11 @@ import TableRow from "@mui/material/TableRow";
 import { useState, useEffect } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import DeleteModal from "./DeleteModal";
 import { Button } from "@mui/material";
 import Navbar from "./Navbar";
-import { Toaster } from "react-hot-toast";
+import { getAllUser } from "../services/UserServices";
 
 const columns = [
   { id: "name", label: "Name", minWidth: 170 },
@@ -57,10 +56,7 @@ export default function StickyHeadTable() {
 
   const fetchAllUser = async () => {
     try {
-      const res = await axios.get(
-        "https://65460c46fe036a2fa9551d05.mockapi.io/users"
-      );
-      console.log("check res", res);
+      const res = await getAllUser();
       setUser(res.data);
     } catch (error) {
       console.log("Error fetching user", error);

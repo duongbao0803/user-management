@@ -2,10 +2,9 @@ import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Button, TextField, Typography } from "@mui/material";
-import { ToastContainer, toast } from "react-toastify";
-import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { editUser, getUserInfo } from "../services/UserServices";
 
 function AddForm() {
   const { id } = useParams();
@@ -18,9 +17,7 @@ function AddForm() {
 
   const fetchUserInfo = async () => {
     try {
-      const res = await axios.get(
-        `https://65460c46fe036a2fa9551d05.mockapi.io/users/${id}`
-      );
+      const res = await getUserInfo(id);
       if (res && res.status === 200) {
         setUserData(res.data);
       }
@@ -37,19 +34,16 @@ function AddForm() {
       age: userData.age || "",
     },
 
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       try {
-        const res = axios.put(
-          `https://65460c46fe036a2fa9551d05.mockapi.io/users/${id}`,
-          {
-            name: values.name,
-            avatar: values.avatar,
-            address: values.address,
-            age: values.age,
-          }
-        );
+        const res = await editUser(id, {
+          name: values.name,
+          avatar: values.avatar,
+          address: values.address,
+          age: values.age,
+        });
         if (res && res.data) {
-          fetchUserInfo();
+          await fetchUserInfo();
         }
         navigate("/home");
       } catch (error) {
@@ -75,7 +69,7 @@ function AddForm() {
       address: userData.address || "",
       age: userData.age || "",
     });
-  }, [userData, formik.setValues]);
+  }, [userData]);
 
   return (
     <>

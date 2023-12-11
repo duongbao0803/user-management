@@ -5,8 +5,8 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
+import { deleteUser } from "../services/UserServices";
 
 export default function DeleteModal({
   open,
@@ -16,9 +16,7 @@ export default function DeleteModal({
 }) {
   const handleSubmit = async () => {
     try {
-      let res = await axios.delete(
-        `https://65460c46fe036a2fa9551d05.mockapi.io/users/${dataDelete}`
-      );
+      let res = await deleteUser(dataDelete);
       if (res && res.status === 200) {
         toast.success("Xóa thành công");
         handleClose();

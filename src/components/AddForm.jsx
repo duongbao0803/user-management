@@ -3,13 +3,11 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Button, TextField, Typography } from "@mui/material";
 import { ToastContainer } from "react-toastify";
-import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { useState } from "react";
+import { addUser } from "../services/UserServices";
 
 function AddForm() {
-  const { id } = useParams();
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -22,16 +20,15 @@ function AddForm() {
 
     onSubmit: (values) => {
       try {
-        const res = axios.post(
-          "https://65460c46fe036a2fa9551d05.mockapi.io/users",
-          {
-            name: values.name,
-            avatar: values.avatar,
-            address: values.address,
-            age: values.age,
-          }
-        );
-        toast.success("Add Successfully");
+        const res = addUser({
+          name: values.name,
+          avatar: values.avatar,
+          address: values.address,
+          age: values.age,
+        });
+        if (res && res.status === 200) {
+          toast.success("Add Successfully");
+        }
         navigate("/home");
       } catch (error) {
         console.log("Error Adding User", error);
