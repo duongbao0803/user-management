@@ -27,6 +27,19 @@ The user management website allows users to log in using their Google accounts t
 - Other: GitHub, Npm.
 
 
+#### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/duongbao0803/user-management
+```
+
+```bash
+npm i se171065
+```
+
+
 
 ##### Contact me via: tonbao0803@gmail.com
 
