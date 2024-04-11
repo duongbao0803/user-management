@@ -1,4 +1,4 @@
-[![Manage User applying CI](https://github.com/duongbao0803/user-management/actions/workflows/node.js.yml/badge.svg)](https://github.com/duongbao0803/user-management/actions/workflows/node.js.yml)
+[![Manage User applying CI](https://github.com/duongbao0803/user-management/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/duongbao0803/user-management/actions/workflows/node.js.yml)
 
 ## User Management
 
