@@ -72,8 +72,8 @@ const DashboardLayout = ({ children }) => {
   const handleLogout = () => {
     logout();
     notification.success({
-      message: "Logout Successful",
-      description: "You have successfully logged out.",
+      message: t("Logout Successful"),
+      description: t("You have successfully logged out."),
       duration: 2,
     });
   };

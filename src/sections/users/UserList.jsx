@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Table } from "antd";
-import React, { useDeferredValue, useEffect, useState } from "react";
+import React, { useDeferredValue, useEffect, useMemo, useState } from "react";
 import { Input, Button, Tag } from "antd";
 import { FilterOutlined } from "@ant-design/icons";
 import AddModal from "./AddModal";
@@ -112,19 +112,24 @@ const UserList = () => {
   });
 
   useEffect(() => {
+    if (!users || users.length === 0) {
+      return;
+    }
     handleSearch(deferredSearchValue);
   }, [deferredSearchValue, users]);
 
-  const handleSearch = (value) => {
-    if (!users) {
-      console.error("User data is undefined or empty");
-      return;
-    }
-    const searchData = users.filter((user) => {
-      return user?.fullName.toLowerCase().includes(value.toLowerCase());
-    });
-    setFilterData(searchData.length > 0 ? searchData : []);
-  };
+  const handleSearch = useMemo(() => {
+    return (value) => {
+      if (!users) {
+        console.error("User data is undefined or empty");
+        return;
+      }
+      const searchData = users.filter((user) => {
+        return user?.fullName.toLowerCase().includes(value.toLowerCase());
+      });
+      setFilterData(searchData.length > 0 ? searchData : []);
+    };
+  }, [users]);
 
   const handleSort = () => {
     let sortedData = [...filterData];

@@ -1,19 +1,23 @@
-import axiosClient from "@/config/axiosClient";
+// import axiosClient from "@/config/axiosClient";
+import axios from "axios";
 
 const getAllUsers = () => {
-  return axiosClient.get("/users");
+  return axios.get("http://localhost:8080/api/v1");
 };
 
 const editUser = (itemId, updatedItem) => {
-  return axiosClient.put(`/users/${itemId}`, updatedItem);
+  return axios.put(
+    `http://localhost:8080/api/v1/update-user/${itemId}`,
+    updatedItem
+  );
 };
 
 const addNewUser = (addItem) => {
-  return axiosClient.post("/users", addItem);
+  return axios.post("http://localhost:8080/api/v1/create-user", addItem);
 };
 
 const removeUser = (itemId) => {
-  return axiosClient.delete(`/users/${itemId}`);
+  return axios.delete(`http://localhost:8080/api/v1/delete-user/${itemId}`);
 };
 
 export { getAllUsers, editUser, addNewUser, removeUser };

@@ -11,6 +11,7 @@ import {
 import moment from "moment/moment";
 import useUserStore from "@/hooks/useUserStore";
 import { provinces, roles } from "@/shared/data";
+import { formatDate } from "@/utils/dateUtils";
 
 const AddModal = ({ setIsOpen, isOpen }) => {
   const [confirmLoading, setConfirmLoading] = useState(false);
@@ -21,10 +22,12 @@ const AddModal = ({ setIsOpen, isOpen }) => {
   const handleOk = async () => {
     try {
       const values = await form.validateFields();
+      const formattedDate = formatDate(values.dob);
+      const updatedValues = { ...values, dob: formattedDate };
       setConfirmLoading(true);
       setTimeout(async () => {
         try {
-          await addItem(values);
+          await addItem(updatedValues);
           setConfirmLoading(false);
           setIsOpen(false);
         } catch (error) {

@@ -1,5 +1,5 @@
 import { FloatButton } from "antd";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { GlobalOutlined } from "@ant-design/icons";
 import flag_vn from "@/assets/image/flag/flag_vietnam.png";
@@ -16,14 +16,6 @@ const LanguageSelector = () => {
     sessionStorage.setItem("language", languageValue);
     setCurrentLanguage(languageValue);
   };
-
-  useEffect(() => {
-    const storedLanguage = sessionStorage.getItem("language");
-    if (storedLanguage) {
-      i18n.changeLanguage(storedLanguage);
-      setCurrentLanguage(storedLanguage);
-    }
-  }, [i18n]);
 
   return (
     <FloatButton.Group

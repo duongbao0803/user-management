@@ -11,6 +11,7 @@ import {
 import dayjs from "dayjs";
 import moment from "moment/moment";
 import useUserStore from "@/hooks/useUserStore";
+import { formatDate } from "@/utils/dateUtils";
 import { provinces, roles } from "@/shared/data";
 
 const EditModal = ({ setIsOpen, isOpen, userInfo }) => {
@@ -32,10 +33,12 @@ const EditModal = ({ setIsOpen, isOpen, userInfo }) => {
   const handleOk = async () => {
     try {
       const values = await form.validateFields();
+      const formattedDate = formatDate(values.dob);
+      const updatedValues = { ...values, dob: formattedDate };
       setConfirmLoading(true);
       setTimeout(async () => {
         try {
-          await updateItem(userInfo.id, values);
+          await updateItem(userInfo.id, updatedValues);
           setConfirmLoading(false);
           setIsOpen(false);
         } catch (error) {

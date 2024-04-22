@@ -6,8 +6,8 @@ const useUserStore = () => {
   const queryClient = useQueryClient();
 
   const fetchUsers = async () => {
-    const response = await getAllUsers();
-    return response.data;
+    const res = await getAllUsers();
+    return res.data.data;
   };
 
   const updateUser = async ({ itemId, updatedItem }) => {
@@ -25,7 +25,11 @@ const useUserStore = () => {
 
   const { data: users = [], isLoading: isFetching } = useQuery(
     "users",
-    fetchUsers
+    fetchUsers,
+    {
+      retry: 3,
+      retryDelay: 5000,
+    }
   );
 
   const updateItemMutation = useMutation(updateUser, {
@@ -99,6 +103,7 @@ const useUserStore = () => {
 
   return {
     users,
+    fetchUsers,
     updateItem,
     addItem,
     deleteItem,
